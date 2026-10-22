@@ -1,13 +1,16 @@
+from __future__ import annotations
+
+
 class Distance:
 
     def __init__(self, km: int | float) -> None:
         self.km = km
 
     def __str__(self) -> str:
-        return str(f"Distance: {self.km} kilometers.")
+        return f"Distance: {self.km} kilometers."
 
     def __repr__(self) -> str:
-        return str(f"Distance(km={self.km})")
+        return f"Distance(km={self.km})"
 
     def __add__(self, other: int | float | Distance) -> Distance:
         if isinstance(other, Distance):
@@ -21,10 +24,10 @@ class Distance:
         self.km += other
         return self
 
-    def __mul__(self, other: int | float | Distance) -> Distance:
+    def __mul__(self, other: int | float) -> Distance:
         return Distance(self.km * other)
 
-    def __truediv__(self, other: int | float | Distance) -> Distance:
+    def __truediv__(self, other: int | float) -> Distance:
         return Distance(round(self.km / other, 2))
 
     def __lt__(self, other: int | float | Distance) -> bool:
